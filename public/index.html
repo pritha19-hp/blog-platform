@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thiranex Blog Platform</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-brand" onclick="showHome()">📝 Thiranex Blog</div>
+    <div class="nav-links" id="navLinks"></div>
+  </nav>
+  <main class="container">
+    <div id="alertBox" class="alert hidden"></div>
+    <section id="homeView">
+      <h2>Latest Blog Posts</h2>
+      <div id="postsList" class="posts-grid"><p>Loading posts...</p></div>
+    </section>
+    <section id="createPostView" class="view hidden">
+      <h2>Create New Blog Post</h2>
+      <form id="createPostForm" onsubmit="handleCreatePost(event)">
+        <div class="form-group"><label>Title</label><input type="text" id="postTitle" required></div>
+        <div class="form-group"><label>Content</label><textarea id="postContent" rows="8" required></textarea></div>
+        <button type="submit" class="btn btn-primary">Publish Post</button>
+      </form>
+    </section>
+    <section id="postDetailView" class="view hidden">
+      <button class="btn btn-secondary" onclick="showHome()">← Back to Posts</button>
+      <article id="postDetail" class="post-card full-post"></article>
+      <section class="comments-section">
+        <h3>Comments</h3>
+        <div id="commentFormContainer"></div>
+        <div id="commentsList"></div>
+      </section>
+    </section>
+    <div id="authModal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeAuthModal()">&times;</span>
+        <h2 id="modalTitle">Login</h2>
+        <form id="authForm" onsubmit="handleAuthSubmit(event)">
+          <div class="form-group" id="usernameGroup"><label>Username</label><input type="text" id="authUsername"></div>
+          <div class="form-group"><label>Email</label><input type="email" id="authEmail" required></div>
+          <div class="form-group"><label>Password</label><input type="password" id="authPassword" required></div>
+          <button type="submit" class="btn btn-primary" id="authSubmitBtn">Login</button>
+        </form>
+        <p class="toggle-auth"><span id="authToggleText">Don't have an account?</span> <a href="#" onclick="toggleAuthMode(event)" id="authToggleLink">Register here</a></p>
+      </div>
+    </div>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
